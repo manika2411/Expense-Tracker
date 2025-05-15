@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BudgetBuddy - Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+</head>
+
+<body>
+  <header id="navbar">
+    <div class="logo">BudgetBuddy</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <nav id="navLinks">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#transactions">Transactions</a>
+      <a href="#summary">Summary</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section theme-neutral" id="dashboard">
+      <h2>Welcome to your Expense Tracker</h2>
+      <p class="balance">Current Balance: <span id="balance">₹0.00</span></p>
+    </section>
+
+    <section class="section" id="transactions">
+      <h2>Add New Transaction</h2>
+      <form id="transactionForm">
+        <input type="text" id="name" placeholder="Transaction Name" required />
+        <input type="number" id="amount" placeholder="Amount" required />
+        <input type="date" id="date" required />
+        <select id="category">
+          <option value="" disabled selected>Select Category</option>
+          <option value="groceries">Groceries</option>
+          <option value="education">Education</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="utilities">Utilities</option>
+          <option value="personal_care">Personal Care</option>
+          <option value="health">Health</option>
+          <option value="salary">Salary</option>
+          <option value="other">Other</option>
+        </select>
+        <select id="type">
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+        <button type="submit">Add Transaction</button>
+      </form>
+    </section>
+
+    <section class="section filter-section">
+      <div class="filter-date">
+        <label for="filterStartDate">Filter by Date:</label>
+        <input type="date" id="filterStartDate">
+        <label for="filterEndDate">to</label>
+        <input type="date" id="filterEndDate">
+      </div>
+      <div class="filter-controls">
+        <label for="filterCategory">Filter by Category:</label>
+        <select id="filterCategory">
+          <option value="">All Categories</option>
+          <option value="groceries">Groceries</option>
+          <option value="education">Education</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="utilities">Utilities</option>
+          <option value="personal_care">Personal Care</option>
+          <option value="health">Health</option>
+          <option value="salary">Salary</option>
+          <option value="other">Other</option>
+        </select>
+        <button onclick="applyFilters()">Apply Filters</button>
+      </div>
+    </section>
+
+    <section class="section" id="summary">
+      <h2>Transaction History</h2>
+      <ul class="transaction-list" id="transactionList"></ul>
+      <div id="monthlySummary">
+        <h3>Monthly Summary</h3>
+        <ul id="monthlySummaryList"></ul>
+      </div>
+      <button id="exportButton" onclick="exportTransactions()">Export as CSV</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
